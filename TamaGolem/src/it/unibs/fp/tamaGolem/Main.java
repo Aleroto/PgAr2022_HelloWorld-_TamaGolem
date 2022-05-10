@@ -2,7 +2,6 @@ package it.unibs.fp.tamaGolem;
 
 import java.util.*;
 
-import iterazioni.Elements;
 
 public class Main {
 	//private final static Integer N = 6;
