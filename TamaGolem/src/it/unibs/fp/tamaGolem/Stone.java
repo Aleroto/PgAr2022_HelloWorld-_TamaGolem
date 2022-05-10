@@ -1,14 +1,14 @@
 package it.unibs.fp.tamaGolem;
 
 public class Stone {
-	Type stoneType;
+	Elements stoneType;
 	int value;
 
-	public Type getStoneType() {
+	public Elements getStoneType() {
 		return stoneType;
 	}
 
-	public void setStoneType(Type stoneType) {
+	public void setStoneType(Elements stoneType) {
 		this.stoneType = stoneType;
 	}
 	public int getValue() {

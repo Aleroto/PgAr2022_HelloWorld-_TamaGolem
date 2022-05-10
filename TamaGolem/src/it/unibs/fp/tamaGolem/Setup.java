@@ -1,32 +1,120 @@
 package it.unibs.fp.tamaGolem;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Setup {
-	
-	private final static Integer N = 6; /** total elements*/
+
+	public final static Integer N = 6;
+	/** total elements */
 	public Integer P;
 	private final static Integer V = 10;
 	private final static Integer V_ = -V;
-	
+
 //region Method for manage the random generation of element's match	
 	/** Generate a map of N random elements from the "type" array_ */
-	public static Map<Integer, String> addElements(Map<Integer, String> elements) {
-		
-		int typeSize = type.length;
+	public static EnumMap<Elements, Integer> addElements(EnumMap<Elements, Integer> elements) {
+		int typeSize = 18; // number of elements in the enum
 		ArrayList<Integer> randomNumber = new ArrayList<Integer>();
 		randomNumber = setRandomInt(0, typeSize - 1);
 
 		for (int i = 0; i < N; i++) {
-			elements.put(i, type[randomNumber.get(i)]);
+			switch (randomNumber.get(i)) {
+			case 0: {
+				elements.put(Elements.Bug, i);
+				;
+			}
+			case 1: {
+				elements.put(Elements.Dark, i);
+				;
+			}
+			case 2: {
+				elements.put(Elements.Dragon, i);
+				;
+			}
+			case 3: {
+				elements.put(Elements.Electric, i);
+				;
+			}
+			case 4: {
+				elements.put(Elements.Fairy, i);
+				;
+			}
+			case 5: {
+				elements.put(Elements.Fighting, i);
+				;
+			}
+			case 6: {
+				elements.put(Elements.Fire, i);
+				;
+			}
+			case 7: {
+				elements.put(Elements.Flying, i);
+				;
+			}
+			case 8: {
+				elements.put(Elements.Ghost, i);
+				;
+			}
+			case 9: {
+				elements.put(Elements.Grass, i);
+				;
+			}
+			case 10: {
+				elements.put(Elements.Ground, i);
+				;
+			}
+			case 11: {
+				elements.put(Elements.Ice, i);
+				;
+			}
+			case 12: {
+				elements.put(Elements.Normal, i);
+				;
+			}
+			case 13: {
+				elements.put(Elements.Poison, i);
+				;
+			}
+			case 14: {
+				elements.put(Elements.Psychic, i);
+				;
+			}
+			case 15: {
+				elements.put(Elements.Rock, i);
+				;
+			}
+			case 16: {
+				elements.put(Elements.Steel, i);
+				;
+			}
+			case 17: {
+				elements.put(Elements.Water, i);
+				;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + randomNumber.get(i));
+			}
 		}
+
 		return elements;
 	}
+	/*
+	 * public static Map<Integer, String> addElements(Map<Integer, String> elements)
+	 * {
+	 * 
+	 * int typeSize = 18; //number of elements in the enum ArrayList<Integer>
+	 * randomNumber = new ArrayList<Integer>(); randomNumber = setRandomInt(0,
+	 * typeSize - 1);
+	 * 
+	 * for (int i = 0; i < N; i++) { elements.put(i, type[randomNumber.get(i)]); }
+	 * return elements; }
+	 */
 
-	/**Generate a set of random number all different */
+	/** Generate a set of random number all different */
 	private static ArrayList<Integer> setRandomInt(int min, int max) {
 		Set<Integer> s = new HashSet<>();
 		ArrayList<Integer> a = new ArrayList<Integer>();
@@ -41,7 +129,7 @@ public class Setup {
 		return a;
 	}
 //endregion	
-	
+
 //region Method for manage the random iteration of element's match	
 	public static int[][] adjacencyMatrixGenerator() {
 		int[][] array_ = new int[N][N];
@@ -51,7 +139,7 @@ public class Setup {
 			// array_[i] = generateRow(array_[i], i);
 			maxPos = V;
 			minNeg = -V;
-			if(i == (N - 1)) {
+			if (i == (N - 1)) {
 				continue;
 			}
 			for (int j = 0; j < N; j++) {
@@ -86,7 +174,7 @@ public class Setup {
 					array_[j][i] = -temp;
 				}
 			}
-			
+
 			// check return true if sum is zero
 			if (!checkRow(array_[i])) {
 				i--;
