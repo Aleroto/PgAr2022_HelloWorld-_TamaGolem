@@ -5,8 +5,16 @@ import java.util.*;
 public class Golem {
 	ArrayList<Stone> stones = new ArrayList<Stone>();
 	int stoneNumber;
-	int lifepoint;
+	int lifePoint;
 	
+	
+	//controlla se il golem ha ancora lifePoint
+	public boolean checkLifePoint() {
+		if(lifePoint <= 0) {
+			return false;
+		}
+		return true;
+	}
 	
 	public ArrayList<Stone> getStones() {
 		return stones;
@@ -21,10 +29,10 @@ public class Golem {
 		this.stoneNumber = stoneNumber;
 	}
 	public int getLifepoint() {
-		return lifepoint;
+		return lifePoint;
 	}
 	public void setLifepoint(int lifepoint) {
-		this.lifepoint = lifepoint;
+		this.lifePoint = lifepoint;
 	}
 	
 	
