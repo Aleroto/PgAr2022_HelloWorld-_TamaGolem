@@ -1,19 +1,26 @@
 package it.unibs.fp.tamaGolem;
 
 public class Match {
-	Player player1;
-	Player player2;
+	Player player1 = new Player();
+	Player player2 = new Player();
+	
+	Glyph glyph = Setup.glyph();
 	
 	
 	public void match() {
+		player1.setGolemStone();
+		player2.setGolemStone();
 		do {
-			for(int i = 0;i<2;i++) {
+			fight();
+			if(!player1.golem.checkLifePoint()) {
+				player1.golem.setLifepoint(Setup.V);
 				player1.setGolemStone();
+				player1.lostGolem();
+			}else {
+				player2.golem.setLifepoint(Setup.V);
 				player2.setGolemStone();
-			}
-			//battaglia
-	
-			
+				player2.lostGolem();
+			}			
 		}while(checkWinner());
 	}
 	
@@ -26,40 +33,36 @@ public class Match {
 					System.out.println("Le potenze degli attacchi sono equivalenti");
 					break;
 				case 1:
-					player1.golems.get(0).setLifepoint(player1.golems.get(0).getLifepoint()- player2.golems.get(0).getStones().get(i).getValue()); 
-					System.out.println("Il golem del giocatore 1 ha subito "+player2.golems.get(0).getStones().get(i).getValue()+" di danno");
+					
+					player1.golem.lifePoint -= Math.abs(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
 					break;
 				case 2:
-					player2.golems.get(0).setLifepoint(player2.golems.get(0).getLifepoint()- player1.golems.get(0).getStones().get(i).getValue()); 					
+					player2.golem.lifePoint -= Math.abs(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));					
 					break;
 			}
 			i++;
-			if(i = Setup.P) { //TODO sostituire Setup.P con il numero massimo di pietre per golem
+			if(i == new Setup().P) { //TODO sostituire Setup.P con il numero massimo di pietre per golem
 				i = 0;
 			}
-		}while(player1.golems.get(0).checkLifePoint() && player2.golems.get(0).checkLifePoint());
+		}while(player1.golem.checkLifePoint() && player2.golem.checkLifePoint());
 			
 	}
 	
 	private int powerComparison(int i) {
-		if(player1.golems.get(0).getStones().get(i).getValue() == player2.golems.get(0).getStones().get(i).getValue()) {
+		int value = Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph);
+		if(value == 0) {
 			return 0;
-		}else if(player1.golems.get(0).getStones().get(i).getValue() < player2.golems.get(0).getStones().get(i).getValue()) {
+		}else if(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph) > 0){
 			return 1;
 		}else {
 			return 2;
 		}
 	}
 	
-	//controlla numero di golem rimanenti
-	private int checkGolemNumber(Player player) {
-		return player.getGolems().size();
-	}
-	
 	//controlla se un giocatore ha finito i golem
 	private boolean checkWinner() {
-		if(checkGolemNumber(player1) == 0 || checkGolemNumber(player2) == 0) {
-			if(checkGolemNumber(player1) == 0) {
+		if(player1.golemNumber == 0 || player2.golemNumber == 0) {
+			if(player1.golemNumber == 0) {
 				System.out.println("IL VINCITORE E' IL GIOCATORE 2");
 			}else {
 				System.out.println("IL VINCITORE E' IL GIOCATORE 1");

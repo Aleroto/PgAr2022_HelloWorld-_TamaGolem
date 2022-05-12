@@ -5,34 +5,37 @@ import java.util.*;
 
 public class Player {
 	
-	ArrayList<Golem> golems= new ArrayList<Golem>();
 	ArrayList<Stone> bag = new ArrayList<Stone>();
-	int golemNumber;
+	public Golem golem = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
+	public Integer golemsNumbers;
+	public Integer golemNumber;
 	
-	public void removeGolem() {
-		golems.remove(0);
+	public void lostGolem() {
+		golemsNumbers--;
 	}
-	
 	
 	//attribuisce tre pietre scelte dal giocatore al primo golem disponibile
 	public void setGolemStone() {
-		System.out.println("seleziona " +golems.get(0).getStoneNumber()+ " pietre da far magiare al golem"+golems.get(0).getStoneNumber());
 		
-		for(int i = 0; i < golems.get(0).getStoneNumber();i++) {
+		golem.stones.clear();
+		System.out.println("OK");
+		System.out.println("seleziona " +golem.getStoneNumber() + " pietre da far magiare al golem"+golem.getStoneNumber());
+		
+		for(int i = 0; i < golem.getStoneNumber();i++) {
 			System.out.println("Il Tuo zaino: ");
 			
 			//stampare lo zaino
 			
-			golems.get(0).stones.add(bag.get(InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, golems.get(0).getStoneNumber())));
+			golem.stones.add(bag.get(InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, golem.getStoneNumber())));
 		}
 	}
 	
 	
-	public ArrayList<Golem> getGolems() {
-		return golems;
+	public int getgolemsNumbers() {
+		return golemsNumbers;
 	}
-	public void setGolems(ArrayList<Golem> golems) {
-		this.golems = golems;
+	public void setgolemsNumbers(int golemsNumbers) {
+		this.golemsNumbers = golemsNumbers;
 	}
 	public ArrayList<Stone> getBag() {
 		return bag;

@@ -5,17 +5,26 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.*;
 
 public class Setup {
 
-	public final static Integer N = 6;
+	
 	/** total elements */
-	public Integer P;
-	private final static Integer V = 10;
+	
+	public final static Integer V = 10;
 	private final static Integer V_ = -V;
-
+	public Integer P = (int)Math.ceil((N+1)/3)+1;
+	public Integer G = (int)Math.ceil((N-1)*(N-2)/(2*P));
+	public Integer S = (int)Math.ceil((2*G*P)/N)*N;
+	
+	public final static Integer N = 6;
+	
 //region Method for manage the random generation of element's match	
 	/** Generate a map of N random elements from the "type" array_ */
+	
+	
+	
 	public static EnumMap<Elements, Integer> addElements(/*EnumMap<Elements, Integer> elements*/) {
 		EnumMap<Elements, Integer> elements = new EnumMap<Elements, Integer>(Elements.class);
 		int typeSize = 18; // number of elements in the enum
@@ -116,6 +125,8 @@ public class Setup {
 	 */
 
 	/** Generate a set of random number all different */
+	
+	
 	private static ArrayList<Integer> setRandomInt(int min, int max) {
 		Set<Integer> s = new HashSet<>();
 		ArrayList<Integer> a = new ArrayList<Integer>();
@@ -129,7 +140,7 @@ public class Setup {
 		}
 		return a;
 	}
-//endregion	
+
 
 //region Method for manage the random iteration of element's match	
 	public static int[][] adjacencyMatrixGenerator() {
@@ -223,11 +234,23 @@ public class Setup {
 	}
 	
 	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
-			public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
-				int indexOne = glyph.getElements().get(elementOne);
-				int indexTwo = glyph.getElements().get(elementTwo);
-				
-				return glyph.getIteration()[indexOne][indexTwo];
-			}
+	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
+		int indexOne = glyph.getElements().get(elementOne);
+		int indexTwo = glyph.getElements().get(elementTwo);
+		
+		return glyph.getIteration()[indexOne][indexTwo];
+	}
 //endregion	
+	//generazione glifo
+	public static Glyph glyph() {
+		return new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
+	}
+	
+	
+	
+			
+	
+	
+	
+	
 }

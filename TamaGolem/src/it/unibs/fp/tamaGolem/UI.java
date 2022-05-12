@@ -35,6 +35,7 @@ public class UI {
 			}
 			System.out.print("\n");
 		}
-		
+		Match prova = new Match();
+		prova.match();
 	}
 }

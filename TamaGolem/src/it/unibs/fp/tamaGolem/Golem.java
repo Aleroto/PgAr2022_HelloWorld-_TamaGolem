@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Golem {
 	ArrayList<Stone> stones = new ArrayList<Stone>();
-	int stoneNumber;
-	int lifePoint;
+	Integer stoneNumber;
+	Integer lifePoint;
 	
 	
 	//controlla se il golem ha ancora lifePoint
@@ -16,6 +16,15 @@ public class Golem {
 		return true;
 	}
 	
+	
+	public Golem(ArrayList<Stone> stones, int stoneNumber, int lifePoint) {
+		super();
+		this.stones = stones;
+		this.stoneNumber = stoneNumber;
+		this.lifePoint = lifePoint;
+	}
+
+
 	public ArrayList<Stone> getStones() {
 		return stones;
 	}
