@@ -16,7 +16,8 @@ public class Setup {
 
 //region Method for manage the random generation of element's match	
 	/** Generate a map of N random elements from the "type" array_ */
-	public static EnumMap<Elements, Integer> addElements(EnumMap<Elements, Integer> elements) {
+	public static EnumMap<Elements, Integer> addElements(/*EnumMap<Elements, Integer> elements*/) {
+		EnumMap<Elements, Integer> elements = new EnumMap<Elements, Integer>(Elements.class);
 		int typeSize = 18; // number of elements in the enum
 		ArrayList<Integer> randomNumber = new ArrayList<Integer>();
 		randomNumber = setRandomInt(0, typeSize - 1);
@@ -25,75 +26,75 @@ public class Setup {
 			switch (randomNumber.get(i)) {
 			case 0: {
 				elements.put(Elements.Bug, i);
-				;
+				break;
 			}
 			case 1: {
 				elements.put(Elements.Dark, i);
-				;
+				break;
 			}
 			case 2: {
 				elements.put(Elements.Dragon, i);
-				;
+				break;
 			}
 			case 3: {
 				elements.put(Elements.Electric, i);
-				;
+				break;
 			}
 			case 4: {
 				elements.put(Elements.Fairy, i);
-				;
+				break;
 			}
 			case 5: {
 				elements.put(Elements.Fighting, i);
-				;
+				break;
 			}
 			case 6: {
 				elements.put(Elements.Fire, i);
-				;
+				break;
 			}
 			case 7: {
 				elements.put(Elements.Flying, i);
-				;
+				break;
 			}
 			case 8: {
 				elements.put(Elements.Ghost, i);
-				;
+				break;
 			}
 			case 9: {
 				elements.put(Elements.Grass, i);
-				;
+				break;
 			}
 			case 10: {
 				elements.put(Elements.Ground, i);
-				;
+				break;
 			}
 			case 11: {
 				elements.put(Elements.Ice, i);
-				;
+				break;
 			}
 			case 12: {
 				elements.put(Elements.Normal, i);
-				;
+				break;
 			}
 			case 13: {
 				elements.put(Elements.Poison, i);
-				;
+				break;
 			}
 			case 14: {
 				elements.put(Elements.Psychic, i);
-				;
+				break;
 			}
 			case 15: {
 				elements.put(Elements.Rock, i);
-				;
+				break;
 			}
 			case 16: {
 				elements.put(Elements.Steel, i);
-				;
+				break;
 			}
 			case 17: {
 				elements.put(Elements.Water, i);
-				;
+				break;
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + randomNumber.get(i));
@@ -220,5 +221,13 @@ public class Setup {
 			return false;
 		}
 	}
+	
+	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
+			public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
+				int indexOne = glyph.getElements().get(elementOne);
+				int indexTwo = glyph.getElements().get(elementTwo);
+				
+				return glyph.getIteration()[indexOne][indexTwo];
+			}
 //endregion	
 }
