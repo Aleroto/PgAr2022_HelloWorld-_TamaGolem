@@ -50,6 +50,8 @@ public class Match {
 	}
 	
 	private int powerComparison(int i) {
+		System.out.println("OK");
+		System.out.println("Controllo iterazione"+Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
 		int value = Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph);
 		if(value == 0) {
 			return 0;
