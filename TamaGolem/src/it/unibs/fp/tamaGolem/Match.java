@@ -5,23 +5,22 @@ public class Match {
 	Player player2 = new Player();
 	
 	Glyph glyph = Setup.glyph();
-	
+	boolean winner;
 	
 	public void match() {
+		System.out.println("Player 1:");
 		player1.setGolemStone();
+		System.out.println("Player 2:");
 		player2.setGolemStone();
 		do {
 			fight();
-			if(!player1.golem.checkLifePoint()) {
-				player1.golem.setLifepoint(Setup.V);
-				player1.setGolemStone();
-				player1.lostGolem();
-			}else {
-				player2.golem.setLifepoint(Setup.V);
-				player2.setGolemStone();
-				player2.lostGolem();
+			winner = checkWinner();
+			if(!player1.golem.checkLifePoint() && winner) {
+				player1.resetGolem();
+			}else if(!player2.golem.checkLifePoint() && winner){
+				player2.resetGolem();
 			}			
-		}while(checkWinner());
+		}while(winner);
 	}
 	
 	
@@ -33,15 +32,17 @@ public class Match {
 					System.out.println("Le potenze degli attacchi sono equivalenti");
 					break;
 				case 1:
-					
+					System.out.println("OK");
 					player1.golem.lifePoint -= Math.abs(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
 					break;
 				case 2:
+					System.out.println("OK");
+
 					player2.golem.lifePoint -= Math.abs(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));					
 					break;
 			}
 			i++;
-			if(i == new Setup().P) { //TODO sostituire Setup.P con il numero massimo di pietre per golem
+			if(i == new Setup().P) { 
 				i = 0;
 			}
 		}while(player1.golem.checkLifePoint() && player2.golem.checkLifePoint());

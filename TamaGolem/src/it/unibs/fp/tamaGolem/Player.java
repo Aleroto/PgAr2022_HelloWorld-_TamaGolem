@@ -10,6 +10,8 @@ public class Player {
 	public Integer golemsNumbers;
 	public Integer golemNumber;
 	
+	private static final String SEPARATORE = "----------------------------------------";
+	
 	public void lostGolem() {
 		golemsNumbers--;
 	}
@@ -17,17 +19,52 @@ public class Player {
 	//attribuisce tre pietre scelte dal giocatore al primo golem disponibile
 	public void setGolemStone() {
 		
+		provaZaino();
+		
 		golem.stones.clear();
 		System.out.println("OK");
-		System.out.println("seleziona " +golem.getStoneNumber() + " pietre da far magiare al golem"+golem.getStoneNumber());
+		System.out.println("seleziona " +golem.getStoneNumber() + " pietre da far magiare al golem:");
 		
 		for(int i = 0; i < golem.getStoneNumber();i++) {
-			System.out.println("Il Tuo zaino: ");
-			
-			//stampare lo zaino
-			
-			golem.stones.add(bag.get(InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, golem.getStoneNumber())));
+			if(printBag()) {
+				int stoneIndex = InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, bag.size()+1)-1;
+				golem.stones.add(bag.get(stoneIndex));
+				bag.remove(stoneIndex);
+			}else {
+				return;
+			}
 		}
+	}
+	
+	//crea un nuovo golem dopo che ne è morto uno e abbassa il numero di golem disponibili
+	public void resetGolem() {
+		golem.setLifepoint(Setup.V);
+		lostGolem();
+		setGolemStone();		
+	}
+	
+	private boolean printBag() {
+		if(bag.size() <= 0) {
+			System.out.println("Lo zaiono è vuoto");
+			return false;
+		}
+		System.out.println(SEPARATORE+"\nIl Tuo zaino: ");
+		for(int i = 0; i < bag.size();i++) {
+			System.out.println("-" + (i+1) + "- " + bag.get(i).getStoneType() );
+		}
+		System.out.println(SEPARATORE);
+		return true;
+		
+	}
+	
+	
+	private void provaZaino() {
+		bag.add(new Stone(Elements.Fighting));
+		bag.add(new Stone(Elements.Flying));
+		bag.add(new Stone(Elements.Ground));
+		bag.add(new Stone(Elements.Ice));
+		bag.add(new Stone(Elements.Fighting));
+		bag.add(new Stone(Elements.Electric));
 	}
 	
 	

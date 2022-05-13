@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Golem {
 	ArrayList<Stone> stones = new ArrayList<Stone>();
-	Integer stoneNumber;
+	Integer stoneNumber = new Setup().P;
 	Integer lifePoint;
 	
 	
