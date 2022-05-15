@@ -2,15 +2,18 @@ package it.unibs.fp.tamaGolem;
 
 import it.unibs.fp.mylib.*;
 import java.util.*;
+import java.util.Scanner;
+
+
 
 public class Player {
-	
-	ArrayList<Stone> bag = new ArrayList<Stone>();
+
 	public Golem golem = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
-	public Integer golemsNumbers;
-	public Integer golemNumber;
+	public int golemsNumbers;
+	public int golemNumber;
 	
 	private static final String SEPARATORE = "----------------------------------------";
+	private static final String MSG_ERROR_STONE = "Pietra non presente nella lista";
 	
 	public void lostGolem() {
 		golemsNumbers--;
@@ -19,78 +22,138 @@ public class Player {
 	//attribuisce tre pietre scelte dal giocatore al primo golem disponibile
 	public void setGolemStone() {
 		
-		provaZaino();
+		Setup.fillBag(); //riempimento zaino
 		
 		golem.stones.clear();
 		System.out.println("OK");
-		System.out.println("seleziona " +golem.getStoneNumber() + " pietre da far magiare al golem:");
-		
+		System.out.println("seleziona " + golem.getStoneNumber() + " pietre da far magiare al golem:");
+
+		printBag();
+
 		for(int i = 0; i < golem.getStoneNumber();i++) {
+		    manageStone();
+			printBag();
+
+			/*
 			if(printBag()) {
-				int stoneIndex = InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, bag.size()+1)-1;
-				golem.stones.add(bag.get(stoneIndex));
-				bag.remove(stoneIndex);
-			}else {
-				return;
+				//int stoneIndex = InputDati.leggiIntero("Selezionare la pietra da assegnare al golem:", 0, UI.setupBag.size()+1)-1;
+				
+		
+				//controlla se pietra scelta Ã¨ presente nello zaino
+				if(Setup.bag.containsKey(UI.setupBag.get(stoneIndex).toString())){
+					//scala di un valore ad una certa key il valore di pietre
+					Integer num = Setup.bag.get(UI.setupBag.toString());				
+					Setup.bag.put(UI.setupBag.toString(), num - 1);
+					
+					//golem.stones.add(UI.setupBag.get(stoneIndex));
+				
+				}else {
+					System.out.println(MSG_ERROR_STONE);
+					//correct = 1;
+				}
+				//UI.setupBag.remove(stoneIndex);
+			*/
+				
 			}
 		}
-	}
+	//}
+		
 	
-	//crea un nuovo golem dopo che ne è morto uno e abbassa il numero di golem disponibili
+	//crea un nuovo golem dopo che ne muore uno e abbassa il numero di golem disponibili
 	public void resetGolem() {
 		golem.setLifepoint(Setup.V);
 		lostGolem();
 		setGolemStone();		
 	}
 	
-	private boolean printBag() {
-		if(bag.size() <= 0) {
-			System.out.println("Lo zaiono è vuoto");
-			return false;
+	private void printBag() {
+		if(Setup.bag.isEmpty()) {
+			System.out.println("Zaino vuoto");
+			//return false;
 		}
 		System.out.println(SEPARATORE+"\nIl Tuo zaino: ");
-		for(int i = 0; i < bag.size();i++) {
-			System.out.println("-" + (i+1) + "- " + bag.get(i).getStoneType() );
+	
+		//stampa hasMap con nomi e quantita pietre
+		Setup.bag.entrySet().forEach(System.out::println);
+		
+		
+		for(int i = 0; i < Setup.bag.size();i++) {
+			//System.out.println("-" + (i+1) + "- " + Setup.bag);
+			
+			//System.out.println("-" + (i+1) + "- " + Setup.bag);		
 		}
+
+		
+		
+		//System.out.println(UI.setupBag);
+		
+	
+
 		System.out.println(SEPARATORE);
-		return true;
+		//return true;
 		
 	}
 	
-	
-	private void provaZaino() {
-		bag.add(new Stone(Elements.Fighting));
-		bag.add(new Stone(Elements.Flying));
-		bag.add(new Stone(Elements.Ground));
-		bag.add(new Stone(Elements.Ice));
-		bag.add(new Stone(Elements.Fighting));
-		bag.add(new Stone(Elements.Electric));
-	}
-	
-	
+
 	public int getgolemsNumbers() {
 		return golemsNumbers;
 	}
 	public void setgolemsNumbers(int golemsNumbers) {
 		this.golemsNumbers = golemsNumbers;
 	}
+	
+	/*
 	public ArrayList<Stone> getBag() {
 		return bag;
 	}
+	
 	public void setBag(ArrayList<Stone> bag) {
 		this.bag = bag;
 	}
+	*/
+	
 	public int getGolemNumber() {
 		return golemNumber;
 	}
 	public void setGolemNumber(int golemNumber) {
 		this.golemNumber = golemNumber;
 	}
-	
-	
-	
 
-	
-	
 
+
+
+	//fase di acquisizione e gestione pietre con treeMap
+	public static void manageStone() {
+		int correct;
+		Scanner scanner = new Scanner(System.in);
+
+		try {
+			do {
+				System.out.print("Selezionare la pietra da assegnare al golem: ");
+				//String text = scanner.nextLine();
+				String text = scanner.next();
+				
+				correct = 0;
+				if(Setup.bag.containsKey(text)){
+					//scala di un valore ad una certa key il valore di pietre
+					Integer num = Setup.bag.get(text);	
+					Setup.bag.put(text, num - 1);
+					
+					//Integer num = Setup.bag.get(UI.setupBag.toString());				
+					//Setup.bag.put(UI.setupBag.toString(), num - 1);
+					
+				}else {
+					System.out.println(MSG_ERROR_STONE);
+					correct = 1;
+				}
+				
+			}while(correct == 1);
+			
+		}finally {
+			//scanner.close();
+		}	
+	}
+
+				
+	
 }

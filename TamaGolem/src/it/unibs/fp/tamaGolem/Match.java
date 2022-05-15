@@ -16,8 +16,10 @@ public class Match {
 			fight();
 			winner = checkWinner();
 			if(!player1.golem.checkLifePoint() && winner) {
+				System.out.println("Player 1 deve evocare un nuovo golem:");
 				player1.resetGolem();
 			}else if(!player2.golem.checkLifePoint() && winner){
+				System.out.println("Player 2 deve evocare un nuovo golem:");
 				player2.resetGolem();
 			}			
 		}while(winner);
@@ -49,7 +51,7 @@ public class Match {
 			
 	}
 	
-	private int powerComparison(int i) {
+	public int powerComparison(int i) {
 		System.out.println("OK");
 		System.out.println("Controllo iterazione"+Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
 		int value = Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph);

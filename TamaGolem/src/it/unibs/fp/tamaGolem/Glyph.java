@@ -4,6 +4,7 @@ import java.util.EnumMap;
 
 public class Glyph {
 	private EnumMap<Elements, Integer> elements = new EnumMap<>(Elements.class);
+	
 	private int[][] iteration = new int[Setup.N][Setup.N];
 
 	

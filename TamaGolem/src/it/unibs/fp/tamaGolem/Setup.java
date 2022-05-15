@@ -1,30 +1,37 @@
 package it.unibs.fp.tamaGolem;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 
 public class Setup {
 
 	
 	/** total elements */
-	
+	public final static Integer N = 6;
 	public final static Integer V = 10;
 	private final static Integer V_ = -V;
-	public Integer P = (int)Math.ceil((N+1)/3)+1;
-	public Integer G = (int)Math.ceil((N-1)*(N-2)/(2*P));
-	public Integer S = (int)Math.ceil((2*G*P)/N)*N;
 	
-	public final static Integer N = 6;
+	public  static Integer P = (int) (Math.ceil((N+1.0)/3.0)+1.0);			//4 per N=6
+	public  static Integer G = (int) (Math.ceil((N-1.0)*(N-2.0)/(2.0*P)));	//3 per N=6
+	public  static Integer S = (int) (Math.ceil((2.0*G*P)/N)*N);			//24 per N=6
+	
+	
+	
+	//public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
+
+	//public static HashMap<String,Integer> bag = new HashMap<>();
+	
+	public static Map<String, Integer> bag = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+
+	
 	
 //region Method for manage the random generation of element's match	
 	/** Generate a map of N random elements from the "type" array_ */
-	
-	
-	
 	public static EnumMap<Elements, Integer> addElements(/*EnumMap<Elements, Integer> elements*/) {
 		EnumMap<Elements, Integer> elements = new EnumMap<Elements, Integer>(Elements.class);
 		int typeSize = 18; // number of elements in the enum
@@ -235,9 +242,18 @@ public class Setup {
 	
 	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
+		
+		//System.out.println(elementOne);
+		
 		int indexOne = glyph.getElements().get(elementOne);
 		int indexTwo = glyph.getElements().get(elementTwo);
+
+		//int indexOne = Integer.parseInt((glyph.getElements().get(elementOne)).toString());
+		//int indexTwo = Integer.parseInt((glyph.getElements().get(elementTwo)).toString());
 		
+		System.out.println(indexOne);
+		System.out.println(indexTwo);
+
 		return glyph.getIteration()[indexOne][indexTwo];
 	}
 //endregion	
@@ -245,12 +261,18 @@ public class Setup {
 	public static Glyph glyph() {
 		return new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 	}
+		
 	
-	
-	
+	/**fills the bag with the number of stones equal to S*/
+	public static void fillBag() {			
+		for(int i = 0; i < UI.setupBag.size(); i++) {
+			bag.put(UI.setupBag.get(i).stoneType.toString(),P);
 			
-	
-	
-	
-	
+			//System.out.println(P);
+			/*
+			bag.add(new Stone(Elements.Flying));
+			bag.add(new Stone(Elements.Ground));
+			*/
+		}
+	}
 }
