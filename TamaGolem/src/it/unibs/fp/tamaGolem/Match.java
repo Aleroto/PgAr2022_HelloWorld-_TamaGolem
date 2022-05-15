@@ -26,7 +26,7 @@ public class Match {
 	}
 	
 	
-	private void fight() {
+	public void fight() {
 		int i = 0;
 		do {
 			switch(powerComparison(i)) {
@@ -39,7 +39,6 @@ public class Match {
 					break;
 				case 2:
 					System.out.println("OK");
-
 					player2.golem.lifePoint -= Math.abs(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));					
 					break;
 			}

@@ -247,12 +247,9 @@ public class Setup {
 		
 		int indexOne = glyph.getElements().get(elementOne);
 		int indexTwo = glyph.getElements().get(elementTwo);
-
-		//int indexOne = Integer.parseInt((glyph.getElements().get(elementOne)).toString());
-		//int indexTwo = Integer.parseInt((glyph.getElements().get(elementTwo)).toString());
 		
-		System.out.println(indexOne);
-		System.out.println(indexTwo);
+		//System.out.println(indexOne);
+		//System.out.println(indexTwo);
 
 		return glyph.getIteration()[indexOne][indexTwo];
 	}
@@ -267,6 +264,8 @@ public class Setup {
 	public static void fillBag() {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
 			bag.put(UI.setupBag.get(i).stoneType.toString(),P);
+			
+			bag.put(UI.setupBag.get(i).stoneType.toString(),4);
 			
 			//System.out.println(P);
 			/*

@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class Player {
 
 	public Golem golem = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
+	
+	public static Golem gole = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
+
 	public int golemsNumbers;
 	public int golemNumber;
 	
@@ -33,6 +36,13 @@ public class Player {
 		for(int i = 0; i < golem.getStoneNumber();i++) {
 		    manageStone();
 			printBag();
+		}
+		
+		//copia le stone dentro all'arraylist di stone
+		for(int i = 0; i < golem.getStoneNumber();i++) {
+		    golem.stones.add(null);
+		}
+		
 
 			/*
 			if(printBag()) {
@@ -54,7 +64,9 @@ public class Player {
 				//UI.setupBag.remove(stoneIndex);
 			*/
 				
-			}
+
+		
+			
 		}
 	//}
 		
@@ -82,9 +94,6 @@ public class Player {
 			
 			//System.out.println("-" + (i+1) + "- " + Setup.bag);		
 		}
-
-		
-		
 		//System.out.println(UI.setupBag);
 		
 	
@@ -132,12 +141,22 @@ public class Player {
 				System.out.print("Selezionare la pietra da assegnare al golem: ");
 				//String text = scanner.nextLine();
 				String text = scanner.next();
-				
 				correct = 0;
 				if(Setup.bag.containsKey(text)){
+					
+					//ricerca indice della stone e eliminazione ad arraylist di pietre scelte golem
+					for(int i = 0; i < UI.setupBag.size(); i++) {
+						if(UI.setupBag.get(i).toString().equalsIgnoreCase(text)) {
+							//aggiungo nell'array di stones quelle inserite dall'utente
+							//golem.stones.add(UI.setupBag.get(i));
+						}
+
+					}
+				
 					//scala di un valore ad una certa key il valore di pietre
 					Integer num = Setup.bag.get(text);	
 					Setup.bag.put(text, num - 1);
+					
 					
 					//Integer num = Setup.bag.get(UI.setupBag.toString());				
 					//Setup.bag.put(UI.setupBag.toString(), num - 1);
