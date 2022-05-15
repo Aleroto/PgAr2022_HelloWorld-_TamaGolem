@@ -242,8 +242,13 @@ public class Setup {
 	
 	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
-		
-		//System.out.println(elementOne);
+		System.out.println("VERIFICA같같같같같같같같같같같같같같같같같");
+		System.out.println(elementOne);
+		System.out.println(elementTwo);
+
+		System.out.println(glyph.getElements().get(elementOne));
+		System.out.println(glyph.getElements().get(elementTwo));
+
 		
 		int indexOne = glyph.getElements().get(elementOne);
 		int indexTwo = glyph.getElements().get(elementTwo);

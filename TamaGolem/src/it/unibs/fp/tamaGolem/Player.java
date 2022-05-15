@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class Player {
 
-	public Golem golem = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
+	public Golem golem = new Golem(new ArrayList<Stone>(),Setup.P,Setup.V);
 	
-	public static Golem gole = new Golem(new ArrayList<Stone>(),new Setup().P,Setup.V);
+	public static Golem gole = new Golem(new ArrayList<Stone>(),Setup.P,Setup.V);
 
 	public int golemsNumbers;
 	public int golemNumber;
@@ -28,7 +28,6 @@ public class Player {
 		Setup.fillBag(); //riempimento zaino
 		
 		golem.stones.clear();
-		System.out.println("OK");
 		System.out.println("seleziona " + golem.getStoneNumber() + " pietre da far magiare al golem:");
 
 		printBag();
@@ -40,7 +39,7 @@ public class Player {
 		
 		//copia le stone dentro all'arraylist di stone
 		for(int i = 0; i < golem.getStoneNumber();i++) {
-		    golem.stones.add(null);
+		    //golem.stones.add(null);
 		}
 		
 
@@ -132,7 +131,7 @@ public class Player {
 
 
 	//fase di acquisizione e gestione pietre con treeMap
-	public static void manageStone() {
+	public void manageStone() {
 		int correct;
 		Scanner scanner = new Scanner(System.in);
 
@@ -142,13 +141,12 @@ public class Player {
 				//String text = scanner.nextLine();
 				String text = scanner.next();
 				correct = 0;
-				if(Setup.bag.containsKey(text)){
-					
+				if(Setup.bag.containsKey(text)){					
 					//ricerca indice della stone e eliminazione ad arraylist di pietre scelte golem
 					for(int i = 0; i < UI.setupBag.size(); i++) {
-						if(UI.setupBag.get(i).toString().equalsIgnoreCase(text)) {
+						if(UI.setupBag.get(i).getStoneType().toString().equalsIgnoreCase(text)) {
 							//aggiungo nell'array di stones quelle inserite dall'utente
-							//golem.stones.add(UI.setupBag.get(i));
+							golem.stones.add(UI.setupBag.get(i));						
 						}
 
 					}

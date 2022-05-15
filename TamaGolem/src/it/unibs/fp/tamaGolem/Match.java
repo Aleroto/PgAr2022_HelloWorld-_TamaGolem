@@ -51,12 +51,18 @@ public class Match {
 	}
 	
 	public int powerComparison(int i) {
-		System.out.println("OK");
-		System.out.println("Controllo iterazione"+Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
+		//System.out.println("Controllo iterazione"+Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph));
+		
+		for(int j = 0; j< 4;j++) {
+			System.out.println("P1 "+player1.golem.stones.get(j).getStoneType()+"P2 "+player2.golem.stones.get(j).getStoneType());
+		}
+		
+		
 		int value = Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph);
+		System.out.println("VALUE = "+value);
 		if(value == 0) {
 			return 0;
-		}else if(Setup.getIteration(player1.golem.stones.get(i).getStoneType(), player2.golem.stones.get(i).getStoneType(), glyph) > 0){
+		}else if(value > 0){
 			return 1;
 		}else {
 			return 2;
