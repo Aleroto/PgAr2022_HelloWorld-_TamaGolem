@@ -15,6 +15,7 @@ public class UI {
 	
 	
 	public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
+	public static Glyph glyph;
 
 
 
@@ -25,7 +26,7 @@ public class UI {
 		 * is necessary for the glyph
 		 */
 		
-		Glyph glyph = new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
+		glyph = new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 		// get key and value from a TreeMap
 		// TEST print elements map
 		for (Map.Entry<Elements, Integer> entry : glyph.getElements().entrySet()) {
@@ -84,8 +85,9 @@ public class UI {
 			
 			return false;
 
-		}finally {
-			scanner.close();
+		}catch (Exception e) {
+			System.out.println("Ricontrolla il valore inserito");
+			return false;
 		}	
 	}
 	

@@ -119,18 +119,6 @@ public class Setup {
 
 		return elements;
 	}
-	/*
-	 * public static Map<Integer, String> addElements(Map<Integer, String> elements)
-	 * {
-	 * 
-	 * int typeSize = 18; //number of elements in the enum ArrayList<Integer>
-	 * randomNumber = new ArrayList<Integer>(); randomNumber = setRandomInt(0,
-	 * typeSize - 1);
-	 * 
-	 * for (int i = 0; i < N; i++) { elements.put(i, type[randomNumber.get(i)]); }
-	 * return elements; }
-	 */
-
 	/** Generate a set of random number all different */
 	
 	
@@ -242,20 +230,18 @@ public class Setup {
 	
 	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
+		/*
 		System.out.println("VERIFICA같같같같같같같같같같같같같같같같같");
+		System.out.println("Mappa: " + glyph.getElements());
 		System.out.println(elementOne);
 		System.out.println(elementTwo);
 
 		System.out.println(glyph.getElements().get(elementOne));
 		System.out.println(glyph.getElements().get(elementTwo));
-
+		*/
 		
 		int indexOne = glyph.getElements().get(elementOne);
 		int indexTwo = glyph.getElements().get(elementTwo);
-		
-		//System.out.println(indexOne);
-		//System.out.println(indexTwo);
-
 		return glyph.getIteration()[indexOne][indexTwo];
 	}
 //endregion	
@@ -271,12 +257,6 @@ public class Setup {
 			bag.put(UI.setupBag.get(i).stoneType.toString(),P);
 			
 			bag.put(UI.setupBag.get(i).stoneType.toString(),4);
-			
-			//System.out.println(P);
-			/*
-			bag.add(new Stone(Elements.Flying));
-			bag.add(new Stone(Elements.Ground));
-			*/
 		}
 	}
 }
