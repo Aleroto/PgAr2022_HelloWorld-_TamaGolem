@@ -25,7 +25,7 @@ public class UI {
 		 * TreeMap for a ordinated list of elements with a key for the value. The value
 		 * is necessary for the glyph
 		 */
-		
+		setupBag.clear();
 		glyph = new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 		// get key and value from a TreeMap
 		// TEST print elements map

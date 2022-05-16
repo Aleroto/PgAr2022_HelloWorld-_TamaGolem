@@ -8,7 +8,7 @@ public class Player {
 
 	public Golem golem = new Golem(new ArrayList<Stone>(), Setup.P, Setup.V);
 
-	public int golemsNumbers;
+	public int golemsNumbers = Setup.G;
 
 	private static final String SEPARATORE = "---------------------------------------------------------------------";
 	private static final String MSG_ERROR_STONE = "Pietra non presente nella lista";
