@@ -37,7 +37,8 @@ public class Setup {
 		int typeSize = 18; // number of elements in the enum
 		ArrayList<Integer> randomNumber = new ArrayList<Integer>();
 		randomNumber = setRandomInt(0, typeSize - 1);
-
+		
+		
 		for (int i = 0; i < N; i++) {
 			switch (randomNumber.get(i)) {
 			case 0: {

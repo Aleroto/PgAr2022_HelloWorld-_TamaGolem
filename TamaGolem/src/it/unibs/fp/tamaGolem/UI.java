@@ -25,7 +25,9 @@ public class UI {
 		 * TreeMap for a ordinated list of elements with a key for the value. The value
 		 * is necessary for the glyph
 		 */
-		setupBag.clear();
+		//setupBag.clear();
+		checkBagSize();
+		glyph = new Glyph(null, null);
 		glyph = new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 		// get key and value from a TreeMap
 		// TEST print elements map
@@ -61,6 +63,17 @@ public class UI {
 		Match prova = new Match();
 		prova.match();
 	}
+
+	private static void checkBagSize() {
+		if(!setupBag.isEmpty()) {
+			setupBag.removeAll(setupBag);
+			/*int size = setupBag.size();
+			for (int i = 0; i < size; i++) {
+				setupBag.remove(0);
+			}*/
+		}
+	}
+	
 	
 	/**starts a new match without having to reset the execution of the program*/
 	public static boolean continueGame() {
