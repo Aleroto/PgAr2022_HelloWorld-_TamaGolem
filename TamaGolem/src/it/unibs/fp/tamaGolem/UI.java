@@ -1,6 +1,7 @@
 package it.unibs.fp.tamaGolem;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.Map;
 
 
@@ -12,7 +13,6 @@ public class UI {
 	private static final String YES = "si";
 	private static final String NO = "no";
 	private static final String MSG_ERROR = "Errore, riscrivere correttamente la scelta";
-	
 	
 	public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
 	public static Glyph glyph;
@@ -27,7 +27,7 @@ public class UI {
 		 */
 		//setupBag.clear();
 		checkBagSize();
-		glyph = new Glyph(null, null);
+		checkElementsSize();
 		glyph = new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 		// get key and value from a TreeMap
 		// TEST print elements map
@@ -74,6 +74,11 @@ public class UI {
 		}
 	}
 	
+	private static void checkElementsSize() {
+		if(glyph != null) {
+			glyph = null;
+		}
+	}
 	
 	/**starts a new match without having to reset the execution of the program*/
 	public static boolean continueGame() {
