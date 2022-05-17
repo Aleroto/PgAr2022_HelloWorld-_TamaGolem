@@ -1,13 +1,11 @@
 package it.unibs.fp.tamaGolem;
 
-import it.unibs.fp.mylib.*;
 import java.util.*;
 import java.util.Scanner;
 
 public class Player {
 
 	public Golem golem = new Golem(new ArrayList<Stone>(), Setup.P, Setup.V);
-
 	public int golemsNumbers = Setup.G;
 
 	private static final String SEPARATORE = "---------------------------------------------------------------------";
@@ -35,10 +33,14 @@ public class Player {
 
 	// crea un nuovo golem dopo che ne muore uno e abbassa il numero di golem
 	// disponibili
-	public void resetGolem() {
+	public void resetGolem(int player) {
 		golem.setLifepoint(Setup.V);
 		lostGolem();
-		setGolemStone();
+		if(golemsNumbers > 0){
+			System.out.println("Player "+ player +" deve evocare un nuovo golem:");
+			setGolemStone();
+		}
+		
 	}
 
 	private void printBag() {
@@ -60,7 +62,8 @@ public class Player {
 			do {
 				System.out.print("Selezionare la pietra da assegnare al golem: ");
 				String text = scanner.next();
-				//String text = InputDati.leggiStringaNonVuota("Selezionare la pietra da assegnare al golem: ");
+				// String text = InputDati.leggiStringaNonVuota("Selezionare la pietra da
+				// assegnare al golem: ");
 				correct = 0;
 				if (Setup.bag.containsKey(text)) {
 					// ricerca indice della stone e eliminazione ad arraylist di pietre scelte golem
@@ -80,9 +83,9 @@ public class Player {
 
 			} while (correct == 1);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Ricontrolla il valore inserito");
-			}
+		}
 	}
 
 	public int getgolemsNumbers() {
