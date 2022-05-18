@@ -43,75 +43,75 @@ public class Setup {
 		for (int i = 0; i < N; i++) {
 			switch (randomNumber.get(i)) {
 			case 0: {
-				elements.put(Elements.Bug, i);
+				elements.put(Elements.Coleottero, i);
 				break;
 			}
 			case 1: {
-				elements.put(Elements.Dark, i);
+				elements.put(Elements.Buio, i);
 				break;
 			}
 			case 2: {
-				elements.put(Elements.Dragon, i);
+				elements.put(Elements.Drago, i);
 				break;
 			}
 			case 3: {
-				elements.put(Elements.Electric, i);
+				elements.put(Elements.Elettro, i);
 				break;
 			}
 			case 4: {
-				elements.put(Elements.Fairy, i);
+				elements.put(Elements.Folletto, i);
 				break;
 			}
 			case 5: {
-				elements.put(Elements.Fighting, i);
+				elements.put(Elements.Lotta, i);
 				break;
 			}
 			case 6: {
-				elements.put(Elements.Fire, i);
+				elements.put(Elements.Fuoco, i);
 				break;
 			}
 			case 7: {
-				elements.put(Elements.Flying, i);
+				elements.put(Elements.Volante, i);
 				break;
 			}
 			case 8: {
-				elements.put(Elements.Ghost, i);
+				elements.put(Elements.Spettro, i);
 				break;
 			}
 			case 9: {
-				elements.put(Elements.Grass, i);
+				elements.put(Elements.Erba, i);
 				break;
 			}
 			case 10: {
-				elements.put(Elements.Ground, i);
+				elements.put(Elements.Terra, i);
 				break;
 			}
 			case 11: {
-				elements.put(Elements.Ice, i);
+				elements.put(Elements.Ghiaccio, i);
 				break;
 			}
 			case 12: {
-				elements.put(Elements.Normal, i);
+				elements.put(Elements.Normale, i);
 				break;
 			}
 			case 13: {
-				elements.put(Elements.Poison, i);
+				elements.put(Elements.Veleno, i);
 				break;
 			}
 			case 14: {
-				elements.put(Elements.Psychic, i);
+				elements.put(Elements.Psico, i);
 				break;
 			}
 			case 15: {
-				elements.put(Elements.Rock, i);
+				elements.put(Elements.Roccia, i);
 				break;
 			}
 			case 16: {
-				elements.put(Elements.Steel, i);
+				elements.put(Elements.Acciaio, i);
 				break;
 			}
 			case 17: {
-				elements.put(Elements.Water, i);
+				elements.put(Elements.Acqua, i);
 				break;
 			}
 			default:

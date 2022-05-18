@@ -2,6 +2,6 @@ package it.unibs.fp.tamaGolem;
 
 
 public enum Elements {
-	Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice,
-	Dragon, Dark, Fairy;
+	Normale, Lotta, Volante, Veleno, Terra, Roccia, Coleottero, Spettro, Acciaio, Fuoco, Acqua, Erba, Elettro, Psico, Ghiaccio,
+	Drago, Buio, Folletto;
 }
