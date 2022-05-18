@@ -12,7 +12,7 @@ public class Match {
 
 
 
-	//programma principale per gestione dello guerra
+	/**Main method for manage the match*/
 	public void match() {
 		int indexStonePlayer1 = 0;
 		int indexStonePlayer2 = 0;
@@ -38,7 +38,7 @@ public class Match {
 		} while (checkWinner());
 	}
 
-	// gestione battaglia tra due golem
+	/**manage the battle between two golem*/
 	public int fight(int indexStonePlayer1, int indexStonePlayer2) {
 		System.out.println("################INIZIO BATTAGLIA######################");
 		do {
@@ -83,7 +83,7 @@ public class Match {
 
 	}
 
-	// confronta le potnze degli elementi coinvolti in battaglia
+	/**Analyse the iteration between the element for take the winner */
 	public int powerComparison(int indexStonePlayer1, int indexStonePlayer2) {
 		int value = Setup.getIteration(player1.golem.stones.get(indexStonePlayer1).getStoneType(),
 				player2.golem.stones.get(indexStonePlayer2).getStoneType(), UI.glyph);
@@ -96,7 +96,7 @@ public class Match {
 		}
 	}
 
-	// controlla se un giocatore ha finito i golem
+	/**Check if a player ended the golem*/
 	private boolean checkWinner() {
 		System.out.println("golem: " + player1.golemsNumbers + " - " + player2.golemsNumbers);
 		if (player1.golemsNumbers == 0 || player2.golemsNumbers == 0) {
@@ -111,7 +111,7 @@ public class Match {
 		}
 	}
 
-	// stampa pietre possedute dai golem
+	/**print the stones of a player*/
 	private void printDeck() {
 		System.out.println("Pietre ingerite dai golem:");
 		for (int j = 0; j < 4; j++) {
@@ -121,7 +121,7 @@ public class Match {
 		System.out.println("-----------------------------------------------------");
 	}
 
-	// interfaccia per gestione assegnazione iniziale pietre golem
+	/** Interface for manage the first set of stones*/
 	private void setGolemStoneMenu() {
 		do {
 			System.out.println("Assegnamento pietre:");
@@ -139,7 +139,7 @@ public class Match {
 		} while (player1.golem.stones.equals(player2.golem.stones));
 	}
 
-	// controllo pietre uguali tra golem appena mandati in combattimento
+	/**Check the golem with the same elements*/
 	private void controlSameGolemStone(Player player) {
 		if (player1.golem.stones.equals(player2.golem.stones)) {
 			player.setGolemStone();

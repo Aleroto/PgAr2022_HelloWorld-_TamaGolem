@@ -23,7 +23,7 @@ public class Player {
 		golemsNumbers--;
 	}
 
-	// attribuisce tre pietre scelte dal giocatore al primo golem disponibile
+	/**set the stone at the golem player*/
 	public void setGolemStone() {
 		//riempio due zaini con pietre
 		if(first == true || second == true ) {
@@ -70,7 +70,7 @@ public class Player {
 		}
 		
 	}
-
+/**print the bag*/
 	public static void printBag(int turn) {
 		System.out.println(SEPARATORE + "\nIl Tuo zaino: ");
 

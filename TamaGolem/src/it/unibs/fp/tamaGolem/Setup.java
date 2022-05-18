@@ -139,7 +139,7 @@ public class Setup {
 	}
 
 
-//region Method for manage the random iteration of element's match	
+/** Method for manage the random iteration of element's match	*/
 	public static int[][] adjacencyMatrixGenerator() {
 		int[][] array_ = new int[N][N];
 		int maxPos = V;
@@ -212,7 +212,7 @@ public class Setup {
 		}
 		return array_;
 	}
-
+/*check the sum of the single row*/
 	private static boolean checkRow(int[] array_) {
 		int sum = 0;
 		for (int i = 0; i < array_.length; i++) {
@@ -230,7 +230,7 @@ public class Setup {
 		}
 	}
 	
-	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
+	/** get the value from two type, rappresents the itaration between the glyph's nodes*/ 
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
 		/*
 		System.out.println("VERIFICA����������������������������������");
@@ -246,7 +246,7 @@ public class Setup {
 		int indexTwo = glyph.getElements().get(elementTwo);
 		return glyph.getIteration()[indexOne][indexTwo];
 	}
-//endregion	
+	
 	//generazione glifo
 	public static Glyph glyph() {
 		return new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
@@ -264,7 +264,7 @@ public class Setup {
 	}
 		*/
 	
-
+/**fill the bag first for a player*/
 	public static void fillBagFirst(Map<String, Integer> bagPlayer) {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
 			bagPlayer.put(UI.setupBag.get(i).stoneType.toString(),P);

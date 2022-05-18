@@ -52,31 +52,6 @@ public class UI {
 		Player.second = true;
 		//System.out.println("second: "+Player.second);
 		Setup.fillBagFirst(Player.bagPlayer2);
-
-		
-		//stampa zaino con tutti gli elementi
-		/*
-	     for(int i = 0; i < setupBag.size(); i++) {
-	            System.out.println(setupBag.get(i).stoneType);
-	      }
-	      */
-		
-		/**
-		 * creating a glyph using an adjacency matrix like below for iteration between
-		 * the elements
-		 * 
-		 * Rows for the attack golem and columns for defens golem, in the diagonal line
-		 * there is 0 because same elements to 0 of damage
-		 * 
-		 * |0 X2 X3 Xn| |Y1 0 Y2 Yn| |Z1 Z2 0 Zn| |T1 T2 T3 0 |
-		 */
-		// TEST print iteration
-		/*for (int i = 0; i < Setup.N; i++) {
-			for (int j = 0; j < Setup.N; j++) {
-				System.out.print(glyph.getIteration()[i][j] + "\t");
-			}
-			System.out.print("\n");
-		}*/
 		
 		Match game = new Match();
 		game.match();
@@ -84,6 +59,7 @@ public class UI {
 		balance();
 	}
 
+	/**print the matrix with match's balance*/
 	private static void balance() {
 		System.out.println("#######################EQUILIBRIO#################");
 		System.out.printf(CHAR_SPACE_MATRIX,"");	
@@ -103,7 +79,8 @@ public class UI {
 		k=0;
 		System.out.println("##################################################");
 	}
-
+	
+	/**clean the bag*/
 	private static void checkBagSize() {
 		if(!setupBag.isEmpty()) {
 			setupBag.removeAll(setupBag);
@@ -114,6 +91,7 @@ public class UI {
 		}
 	}
 	
+	/**clean the elements map in the glyph*/
 	private static void checkElementsSize() {
 		if(glyph != null) {
 			glyph = null;
