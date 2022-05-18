@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class UI {
 	
+	private static final String CHAR_SPACE_MATRIX = "%-15s| ";
 	private static final String YES = "si";
 	private static final String NO = "no";
 	private static final String MSG_ERROR = "Errore, riscrivere correttamente la scelta";
@@ -37,9 +38,10 @@ public class UI {
 		// get key and value from a TreeMap
 		// TEST print elements map
 		for (Map.Entry<Elements, Integer> entry : glyph.getElements().entrySet()) {
-			System.out.println(entry.getKey() + " -> " + entry.getValue());
+			/*System.out.println(entry.getKey() + " -> " + entry.getValue());*/
 			setupBag.add(new Stone(entry.getKey()));
 		}
+		
 		
 		Player.bagPlayer1.clear();
 		Player.first = true;
@@ -69,15 +71,37 @@ public class UI {
 		 * |0 X2 X3 Xn| |Y1 0 Y2 Yn| |Z1 Z2 0 Zn| |T1 T2 T3 0 |
 		 */
 		// TEST print iteration
-		for (int i = 0; i < Setup.N; i++) {
+		/*for (int i = 0; i < Setup.N; i++) {
 			for (int j = 0; j < Setup.N; j++) {
 				System.out.print(glyph.getIteration()[i][j] + "\t");
 			}
 			System.out.print("\n");
-		}
+		}*/
 		
-		Match prova = new Match();
-		prova.match();
+		Match game = new Match();
+		game.match();
+		
+		balance();
+	}
+
+	private static void balance() {
+		System.out.println("#######################EQUILIBRIO#################");
+		System.out.printf(CHAR_SPACE_MATRIX,"");	
+		for (Map.Entry<Elements, Integer> entry : glyph.getElements().entrySet()) {
+			System.out.printf(CHAR_SPACE_MATRIX, entry.getKey());
+		}
+		System.out.print("\n");
+		int e=0, k =0;		
+		for (Map.Entry<Elements, Integer> entry : glyph.getElements().entrySet()) {
+				System.out.printf(CHAR_SPACE_MATRIX, entry.getKey());
+				for (int j = 0; j < Setup.N; j++) {
+					System.out.printf(CHAR_SPACE_MATRIX, glyph.getIteration()[k][j]);
+				}
+				System.out.print("\n");
+				k++;			
+		}
+		k=0;
+		System.out.println("##################################################");
 	}
 
 	private static void checkBagSize() {
