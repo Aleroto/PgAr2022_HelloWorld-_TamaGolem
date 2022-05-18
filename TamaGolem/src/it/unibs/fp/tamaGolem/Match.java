@@ -1,14 +1,25 @@
 package it.unibs.fp.tamaGolem;
 
+import java.util.Map;
+import java.util.*;
+
+
+
 public class Match {
 	Player player1 = new Player();
 	Player player2 = new Player();
+	
+
+
 
 	//programma principale per gestione dello guerra
 	public void match() {
 		int indexStonePlayer1 = 0;
 		int indexStonePlayer2 = 0;
 		setGolemStoneMenu();
+		
+
+
 		do {
 			printDeck();
 			indexStonePlayer1 = fight(indexStonePlayer1, indexStonePlayer2);
@@ -59,9 +70,14 @@ public class Match {
 		System.out.println("################TERMINE BATTAGLIA#####################");
 		if (player1.golem.checkLifePoint()) {
 			System.out.println("IL GOLEM DEL GIOCATORE 2 E' STATO SCONFITTO");
+			//Player.turn = 2;
+			//Player.bagPlayer2.entrySet().forEach(System.out::println);	
 			return indexStonePlayer1;
 		} else {
 			System.out.println("IL GOLEM DEL GIOCATORE 1 E' STATO SCONFITTO");
+			//Player.turn = 1;
+			//Player.bagPlayer1.entrySet().forEach(System.out::println);	
+
 			return indexStonePlayer2;
 		}
 
@@ -110,9 +126,16 @@ public class Match {
 		do {
 			System.out.println("Assegnamento pietre:");
 			System.out.println("PLAYER 1:");
+			//Setup.fillBagFirst(Player.bagPlayer1);
+			//Player.printBag(Player.bagPlayer1);
 			player1.setGolemStone();
+			
 			System.out.println("PLAYER 2:");
+			//Setup.fillBagFirst(Player.bagPlayer2);
+			//Player.printBag(Player.bagPlayer2);
+			//Player.turn = 2;
 			player2.setGolemStone();
+			
 		} while (player1.golem.stones.equals(player2.golem.stones));
 	}
 

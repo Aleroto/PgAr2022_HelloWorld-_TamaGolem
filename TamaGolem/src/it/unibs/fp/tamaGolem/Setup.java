@@ -2,10 +2,6 @@ package it.unibs.fp.tamaGolem;
 
 import java.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-
 
 public class Setup {
 
@@ -19,13 +15,18 @@ public class Setup {
 	public  static Integer G = (int) (Math.ceil((N-1.0)*(N-2.0)/(2.0*P)));	//3 per N=6
 	public  static Integer S = (int) (Math.ceil((2.0*G*P)/N)*N);			//24 per N=6
 	
-	
+	//public static ArrayList<Stone> bagPlayer1 = new ArrayList<Stone>();
+	//public static ArrayList<Stone> bagPlayer2 = new ArrayList<Stone>();
 	
 	//public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
 
 	//public static HashMap<String,Integer> bag = new HashMap<>();
 	
 	public static Map<String, Integer> bag = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+	
+	//public static Map<String, Integer> bagPlayer1 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+	//public static Map<String, Integer> bagPlayer2 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
 
 
 	
@@ -232,7 +233,7 @@ public class Setup {
 	//TODO Ditemi se questi metodi per ottenere le iterazioni fra elementi le volete in una classe di supporto o altro...
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
 		/*
-		System.out.println("VERIFICA°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+		System.out.println("VERIFICAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		System.out.println("Mappa: " + glyph.getElements());
 		System.out.println(elementOne);
 		System.out.println(elementTwo);
@@ -252,12 +253,27 @@ public class Setup {
 	}
 		
 	
+
 	/**fills the bag with the number of stones equal to S*/
-	public static void fillBag() {			
+	/*
+	public static void fillBagFirst() {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
 			bag.put(UI.setupBag.get(i).stoneType.toString(),P);
-			
-			bag.put(UI.setupBag.get(i).stoneType.toString(),4);
+			//bag.put(UI.setupBag.get(i).stoneType.toString(),4);
 		}
 	}
+		*/
+	
+
+	public static void fillBagFirst(Map<String, Integer> bagPlayer) {			
+		for(int i = 0; i < UI.setupBag.size(); i++) {
+			bagPlayer.put(UI.setupBag.get(i).stoneType.toString(),P);
+
+			//bag.put(UI.setupBag.get(i).stoneType.toString(),4);
+		}
+	}
+	
+
+	
+
 }

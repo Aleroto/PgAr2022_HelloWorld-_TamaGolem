@@ -15,6 +15,11 @@ public class UI {
 	private static final String MSG_ERROR = "Errore, riscrivere correttamente la scelta";
 	
 	public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
+	
+	public static ArrayList<Stone> setupBagPlayer1 = new ArrayList<Stone>();
+	public static ArrayList<Stone> setupBagPlayer2 = new ArrayList<Stone>();
+
+
 	public static Glyph glyph;
 
 
@@ -35,6 +40,11 @@ public class UI {
 			System.out.println(entry.getKey() + " -> " + entry.getValue());
 			setupBag.add(new Stone(entry.getKey()));
 		}
+		
+
+		//Setup.fillBagFirst(Player.bagPlayer1);
+		//Setup.fillBagFirst(Player.bagPlayer2);
+
 		
 		//stampa zaino con tutti gli elementi
 		/*
@@ -91,8 +101,13 @@ public class UI {
 				String choice = scanner.nextLine();
 				correct = 0;
 				if(choice.equalsIgnoreCase(YES)) {
+					//Player.first = true;
+					//Player.second = true;
+					//Player.turn = 1;
+					//Setup.fillBagFirst(Player.bagPlayer1);
 					return true;
 				}else if(choice.equalsIgnoreCase(NO)){
+					//Setup.fillBagFirst(Player.bagPlayer2);
 					return false;
 				}else {
 					System.out.println(MSG_ERROR);
