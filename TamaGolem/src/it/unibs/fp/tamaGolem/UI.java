@@ -104,8 +104,8 @@ public class UI {
 		try {
 			do {
 				System.out.print("Vuoi fare una nuova partita? (si o no): ");
-				//String choice = scanner.nextLine();
-				String choice = scanner.next();
+				String choice = scanner.nextLine();
+				//String choice = scanner.next();
 
 				correct = 0;
 				if(choice.equalsIgnoreCase(YES)) {
