@@ -17,7 +17,7 @@ public class Player {
 
 
 	private static final String SEPARATORE = "---------------------------------------------------------------------";
-	private static final String MSG_ERROR_STONE = "Pietra non presente nella lista";
+	private static final String MSG_ERROR_STONE = "Pietra non disponibile";
 
 	public void lostGolem() {
 		golemsNumbers--;
@@ -26,21 +26,21 @@ public class Player {
 	// attribuisce tre pietre scelte dal giocatore al primo golem disponibile
 	public void setGolemStone() {
 		//riempio due zaini con pietre
-		
 		if(first == true || second == true ) {
 			if(first) {
-				Setup.fillBagFirst(bagPlayer1); // riempimento zaino del player 1
+				//Setup.fillBagFirst(bagPlayer1); // riempimento zaino del player 1
 				first = false;
 				
 			}else {
-				Setup.fillBagFirst(bagPlayer2);
+				//Setup.fillBagFirst(bagPlayer2);
 				turn = 2;
 				second = false;
-			}	
+			}
+
 		}
 
 		golem.stones.clear();
-		System.out.println("seleziona " + golem.getStoneNumber() + " pietre da far magiare al golem:");
+		System.out.println("seleziona " + golem.getStoneNumber() + " pietre da far mangiare al golem:");
 
 		printBag(turn);
 		
@@ -48,23 +48,21 @@ public class Player {
 			manageStone(getBagPlayer(turn));
 		}
 		
-		printBag(turn);
+		printBag(turn);		
 	}
 
-	// crea un nuovo golem dopo che ne muore uno e abbassa il numero di golem
-	// disponibili
+
+	/**creates a new golem after one dies and lower the number of golems available*/
 	public void resetGolem(int player) {
 		golem.setLifepoint(Setup.V);
 		lostGolem();
 		if(golemsNumbers > 0){
 			System.out.println("Player "+ player +" deve evocare un nuovo golem:");
 			if(player == 1) {
-				//printBag(1);
 				turn = 1;
 			}
 			else {
 				turn = 2;
-				//printBag(2);
 			}
 			
 			//manageStone(getBagPlayer(player));
@@ -89,9 +87,10 @@ public class Player {
 		System.out.println(SEPARATORE);			
 	}
 
+	
+	
 		// stampa treeMap con nomi e quantita pietre
 		//Setup.bag.entrySet().forEach(System.out::println);			
-			
 
 	
 	/*
@@ -148,7 +147,7 @@ public class Player {
 	
 */	
 	
-	//manage stones default
+	/**manages stones of player*/
 	public void manageStone(Map<String, Integer> bag) {
 		int correct;
 		int over;

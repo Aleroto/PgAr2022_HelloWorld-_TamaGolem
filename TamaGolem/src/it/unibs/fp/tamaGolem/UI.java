@@ -41,9 +41,15 @@ public class UI {
 			setupBag.add(new Stone(entry.getKey()));
 		}
 		
-
-		//Setup.fillBagFirst(Player.bagPlayer1);
-		//Setup.fillBagFirst(Player.bagPlayer2);
+		Player.bagPlayer1.clear();
+		Player.first = true;
+		Player.turn = 1;
+		Setup.fillBagFirst(Player.bagPlayer1);
+		
+		Player.bagPlayer2.clear();
+		Player.second = true;
+		//System.out.println("second: "+Player.second);
+		Setup.fillBagFirst(Player.bagPlayer2);
 
 		
 		//stampa zaino con tutti gli elementi
@@ -97,8 +103,10 @@ public class UI {
 
 		try {
 			do {
-				System.out.println("Vuoi fare una nuova partita? (si o no):");
-				String choice = scanner.nextLine();
+				System.out.print("Vuoi fare una nuova partita? (si o no): ");
+				//String choice = scanner.nextLine();
+				String choice = scanner.next();
+
 				correct = 0;
 				if(choice.equalsIgnoreCase(YES)) {
 					//Player.first = true;
