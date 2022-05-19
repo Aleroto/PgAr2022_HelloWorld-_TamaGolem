@@ -25,37 +25,58 @@ public class Player {
 
 	/**Sets the stone at the golem player*/
 	public void setGolemStone() {
+		int cnt1 = 0;
+		int cnt2 = 0;
+
 		// riempio due zaini con pietre
 		if (first == true || second == true) {
 			if (first) {
-				// Setup.fillBagFirst(bagPlayer1); // riempimento zaino del player 1
 				first = false;
 			} else {
-				// Setup.fillBagFirst(bagPlayer2);
 				turn = 2;
 				second = false;
 			}
 		}
-
+				
 		golem.stones.clear();
 		System.out.println("seleziona " + golem.getStoneNumber() + " pietre da far mangiare al golem:");
-
+				
 		printBag(turn);
-		
-		
 		for (int i = 0; i < golem.getStoneNumber(); i++) {
 			manageStone(getBagPlayer(turn));
 		}
-		printBag(turn);
-		
-		
-		//prova risoluzione baco
+		printBag(turn);		
+				
+		//gestione caso in cui fanno un pareggio
+		for(Map.Entry<String,Integer> entry : Player.getBagPlayer(1).entrySet()) {
+			  Integer value = entry.getValue();
+			  if(value == 0)
+				 cnt1++;
+			}
+			
+		//gestione caso in cui fanno un pareggio
+		for(Map.Entry<String,Integer> entry : Player.getBagPlayer(2).entrySet()) {
+			  Integer value = entry.getValue();
+			  if(value == 0)
+				  cnt2++;
+		}	
+			
+		if(cnt1 == Setup.N && cnt2 == Setup.N) {
+			System.out.println("################LA PARTITA E' FINITA IN PARITA'################");
+			cnt1 = 0;
+			cnt2 = 0;
+			Player.bagPlayer1.clear();
+			Player.bagPlayer2.clear();
+			Setup.fillBagFirst(Player.bagPlayer1);
+			Setup.fillBagFirst(Player.bagPlayer2);
+		}
+			
 		if(turn == 1)
 			turn = 2;
 		else
 			turn = 1;
-			
 	}
+
 
 	/**Creates a new golem after one dies and lower the number of golems available*/
 	public void resetGolem(int player) {
@@ -68,8 +89,6 @@ public class Player {
 			} else {
 				turn = 2;
 			}
-
-			// manageStone(getBagPlayer(player));
 			setGolemStone();
 		}
 
@@ -92,49 +111,10 @@ public class Player {
 		System.out.println(SEPARATORE);
 	}
 
-	// stampa treeMap con nomi e quantita pietre
-	// Setup.bag.entrySet().forEach(System.out::println);
-
-	/*
-	 * private void printBag() { if (Setup.bag.isEmpty()) {
-	 * System.out.println("Zaino vuoto"); } System.out.println(SEPARATORE +
-	 * "\nIl Tuo zaino: "); // stampa treeMap con nomi e quantita pietre
-	 * Setup.bag.entrySet().forEach(System.out::println);
-	 * System.out.println(SEPARATORE);
-	 * 
-	 * }
-	 */
-
-	/*
-	 * // fase di acquisizione e gestione pietre con treeMap public void
-	 * manageStone(Map<String, Integer> bag) { int correct; Scanner scanner = new
-	 * Scanner(System.in);
-	 * 
-	 * try { do { System.out.print("Selezionare la pietra da assegnare al golem: ");
-	 * String text = scanner.next(); // String text =
-	 * InputDati.leggiStringaNonVuota("Selezionare la pietra da // assegnare al
-	 * golem: "); correct = 0; if (Setup.bag.containsKey(text)) { // ricerca indice
-	 * della stone e eliminazione ad arraylist di pietre scelte golem for (int i =
-	 * 0; i < UI.setupBag.size(); i++) { if
-	 * (UI.setupBag.get(i).getStoneType().toString().equalsIgnoreCase(text)) { //
-	 * aggiungo nell'array di stones quelle inserite dall'utente
-	 * golem.stones.add(UI.setupBag.get(i)); } } // scala di un valore ad una certa
-	 * key il valore di pietre Integer num = bag.get(text); bag.put(text, num - 1);
-	 * } else { System.out.println(MSG_ERROR_STONE); correct = 1; }
-	 * 
-	 * } while (correct == 1);
-	 * 
-	 * } catch (Exception e) { System.out.println("Ricontrolla il valore inserito");
-	 * } }
-	 * 
-	 */
-
+	
 	/**Manages stones of player*/
 	public void manageStone(Map<String, Integer> bag) {
 		int correct;
-		//int over;
-		// Integer num = 0;
-		// String text;
 		Scanner scanner = new Scanner(System.in);
 
 		try {
@@ -169,7 +149,7 @@ public class Player {
 	}
 
 	/**Gets Bag of the Player*/
-	public Map<String, Integer> getBagPlayer(int turn) {
+	public static Map<String, Integer> getBagPlayer(int turn) {
 		if (turn == 1)
 			return bagPlayer1;
 		else if (turn == 2)

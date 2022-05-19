@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class UI {
 	
 	private static final String CHAR_SPACE_MATRIX = "%-15s| ";
-	private static final String YES = "si";
+	private static final String YES1 = "si";
+	private static final String YES2 = "SI";
 	private static final String NO = "no";
 	private static final String MSG_ERROR = "Errore, riscrivere correttamente la scelta";
 	
@@ -43,16 +44,13 @@ public class UI {
 		}
 		
 		
-		Player.bagPlayer1.clear();
 		Player.first = true;
 		Player.turn = 1;
 		Setup.fillBagFirst(Player.bagPlayer1);
 		
-		Player.bagPlayer2.clear();
 		Player.second = true;
-		//System.out.println("second: "+Player.second);
 		Setup.fillBagFirst(Player.bagPlayer2);
-		
+				
 		Match game = new Match();
 		game.match();
 		
@@ -84,10 +82,6 @@ public class UI {
 	private static void checkBagSize() {
 		if(!setupBag.isEmpty()) {
 			setupBag.removeAll(setupBag);
-			/*int size = setupBag.size();
-			for (int i = 0; i < size; i++) {
-				setupBag.remove(0);
-			}*/
 		}
 	}
 	
@@ -105,19 +99,15 @@ public class UI {
 
 		try {
 			do {
-				System.out.print("Vuoi fare una nuova partita? (si o no): ");
+				System.out.print("Vuoi fare una nuova partita? (SI o NO): ");
 				String choice = scanner.nextLine();
 				//String choice = scanner.next();
 
 				correct = 0;
-				if(choice.equalsIgnoreCase(YES)) {
-					//Player.first = true;
-					//Player.second = true;
-					//Player.turn = 1;
-					//Setup.fillBagFirst(Player.bagPlayer1);
+				//if(choice.equalsIgnoreCase(YES)) {
+				if(choice.equalsIgnoreCase(YES1) || choice.equalsIgnoreCase(YES2)) {
 					return true;
 				}else if(choice.equalsIgnoreCase(NO)){
-					//Setup.fillBagFirst(Player.bagPlayer2);
 					return false;
 				}else {
 					System.out.println(MSG_ERROR);

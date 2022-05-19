@@ -12,22 +12,9 @@ public class Setup {
 	public  static Integer P = (int) (Math.ceil((N+1.0)/3.0)+1.0);			//4 per N=6
 	public  static Integer G = (int) (Math.ceil((N-1.0)*(N-2.0)/(2.0*P)));	//3 per N=6
 	public  static Integer S = (int) (Math.ceil((2.0*G*P)/N)*N);			//24 per N=6
-	
-	//public static ArrayList<Stone> bagPlayer1 = new ArrayList<Stone>();
-	//public static ArrayList<Stone> bagPlayer2 = new ArrayList<Stone>();
-	
-	//public static ArrayList<Stone> setupBag = new ArrayList<Stone>();
-
-	//public static HashMap<String,Integer> bag = new HashMap<>();
-	
+		
 	public static Map<String, Integer> bag = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-	
-	//public static Map<String, Integer> bagPlayer1 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-	//public static Map<String, Integer> bagPlayer2 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
-
-
-	
 	
 	//region Method for manage the random generation of element's match	
 	/**Generates a map of N random elements from the "type" array_ */
@@ -229,17 +216,7 @@ public class Setup {
 	}
 	
 	/**Gets the value from two type, rappresents the iteration between the glyph's nodes*/ 
-	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
-		/*
-		System.out.println("VERIFICA����������������������������������");
-		System.out.println("Mappa: " + glyph.getElements());
-		System.out.println(elementOne);
-		System.out.println(elementTwo);
-
-		System.out.println(glyph.getElements().get(elementOne));
-		System.out.println(glyph.getElements().get(elementTwo));
-		*/
-		
+	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {		
 		int indexOne = glyph.getElements().get(elementOne);
 		int indexTwo = glyph.getElements().get(elementTwo);
 		return glyph.getIteration()[indexOne][indexTwo];
@@ -251,22 +228,10 @@ public class Setup {
 	}
 		
 	
-
-	/*
-	public static void fillBagFirst() {			
-		for(int i = 0; i < UI.setupBag.size(); i++) {
-			bag.put(UI.setupBag.get(i).stoneType.toString(),P);
-			//bag.put(UI.setupBag.get(i).stoneType.toString(),4);
-		}
-	}
-		*/
-	
 	/**Fills the bag for a player*/
 	public static void fillBagFirst(Map<String, Integer> bagPlayer) {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
 			bagPlayer.put(UI.setupBag.get(i).stoneType.toString(),P);
-
-			//bag.put(UI.setupBag.get(i).stoneType.toString(),4);
 		}
 	}
 	
