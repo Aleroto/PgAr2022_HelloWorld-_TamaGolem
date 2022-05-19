@@ -2,11 +2,9 @@ package it.unibs.fp.tamaGolem;
 
 import java.util.*;
 
-
+/**Represents the class to set the starting conditions*/
 public class Setup {
-
-	
-	/** total elements */
+	/**Total elements */
 	public final static Integer N = 6;
 	public final static Integer V = 10;
 	private final static Integer V_ = -V;
@@ -31,8 +29,8 @@ public class Setup {
 
 	
 	
-//region Method for manage the random generation of element's match	
-	/** Generate a map of N random elements from the "type" array_ */
+	//region Method for manage the random generation of element's match	
+	/**Generates a map of N random elements from the "type" array_ */
 	public static EnumMap<Elements, Integer> addElements(/*EnumMap<Elements, Integer> elements*/) {
 		EnumMap<Elements, Integer> elements = new EnumMap<Elements, Integer>(Elements.class);
 		int typeSize = 18; // number of elements in the enum
@@ -121,9 +119,8 @@ public class Setup {
 
 		return elements;
 	}
-	/** Generate a set of random number all different */
 	
-	
+	/**Generates a set of random number all different */
 	private static ArrayList<Integer> setRandomInt(int min, int max) {
 		Set<Integer> s = new HashSet<>();
 		ArrayList<Integer> a = new ArrayList<Integer>();
@@ -139,7 +136,7 @@ public class Setup {
 	}
 
 
-/** Method for manage the random iteration of element's match	*/
+	/**Manages the random iteration of element's match*/
 	public static int[][] adjacencyMatrixGenerator() {
 		int[][] array_ = new int[N][N];
 		int maxPos = V;
@@ -194,7 +191,7 @@ public class Setup {
 		return array_;
 	}
 
-	/** Generate a single row of a matrix[][] */
+	/**Generates a single row of a matrix[][] */
 	private static int[] generateRow(int[] array_, int i) {
 		int maxPos = V;
 		final int minNeg = -V;
@@ -212,7 +209,8 @@ public class Setup {
 		}
 		return array_;
 	}
-/*check the sum of the single row*/
+	
+	/**Checks the sum of the single row*/
 	private static boolean checkRow(int[] array_) {
 		int sum = 0;
 		for (int i = 0; i < array_.length; i++) {
@@ -230,7 +228,7 @@ public class Setup {
 		}
 	}
 	
-	/** get the value from two type, rappresents the itaration between the glyph's nodes*/ 
+	/**Gets the value from two type, rappresents the iteration between the glyph's nodes*/ 
 	public static int getIteration(Elements elementOne, Elements elementTwo, Glyph glyph) {
 		/*
 		System.out.println("VERIFICA����������������������������������");
@@ -247,14 +245,13 @@ public class Setup {
 		return glyph.getIteration()[indexOne][indexTwo];
 	}
 	
-	//generazione glifo
+	/**Generates Glyph*/
 	public static Glyph glyph() {
 		return new Glyph(Setup.addElements(), Setup.adjacencyMatrixGenerator());
 	}
 		
 	
 
-	/**fills the bag with the number of stones equal to S*/
 	/*
 	public static void fillBagFirst() {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
@@ -264,7 +261,7 @@ public class Setup {
 	}
 		*/
 	
-/**fill the bag first for a player*/
+	/**Fills the bag for a player*/
 	public static void fillBagFirst(Map<String, Integer> bagPlayer) {			
 		for(int i = 0; i < UI.setupBag.size(); i++) {
 			bagPlayer.put(UI.setupBag.get(i).stoneType.toString(),P);

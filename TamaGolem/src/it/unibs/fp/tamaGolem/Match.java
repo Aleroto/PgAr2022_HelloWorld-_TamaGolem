@@ -3,6 +3,7 @@ package it.unibs.fp.tamaGolem;
 import java.util.Map;
 import java.util.*;
 
+/**Represents the class for the single Match*/
 public class Match {
 	Player player1 = new Player();
 	Player player2 = new Player();
@@ -30,7 +31,7 @@ public class Match {
 		} while (checkWinner());
 	}
 
-	/**manage the battle between two golem*/
+	/**Battle between two golem*/
 	public int fight(int indexStonePlayer1, int indexStonePlayer2) {
 		System.out.println("################INIZIO BATTAGLIA######################");
 		do {
@@ -75,7 +76,7 @@ public class Match {
 
 	}
 
-	/**Analyse the iteration between the element for take the winner */
+	/**Analyze the iteration between the element for take the winner */
 	public int powerComparison(int indexStonePlayer1, int indexStonePlayer2) {
 		System.out.println("-Il golem 1 scaglia una pietra "
 				+ player1.golem.stones.get(indexStonePlayer1).getStoneType() + " e il golem 2 scaglia una pietra "
@@ -91,7 +92,7 @@ public class Match {
 		}
 	}
 
-	/**Check if a player ended the golem*/
+	/**Checks if a player ended the golem*/
 	private boolean checkWinner() {
 		System.out.println("golem: " + player1.golemsNumbers + " - " + player2.golemsNumbers);
 		if (player1.golemsNumbers == 0 || player2.golemsNumbers == 0) {
@@ -106,7 +107,7 @@ public class Match {
 		}
 	}
 
-	/**print the stones of a player*/
+	/**Prints the stones of a player*/
 	private void printDeck() {
 		System.out.println("Pietre ingerite dai golem:");
 		for (int j = 0; j < 4; j++) {
@@ -116,7 +117,7 @@ public class Match {
 		System.out.println("-----------------------------------------------------");
 	}
 
-	/** Interface for manage the first set of stones*/
+	/**Interface for manage the first set of stones*/
 	private void setGolemStoneMenu() {
 		do {
 			System.out.println("Assegnamento pietre:");
@@ -134,7 +135,7 @@ public class Match {
 		} while (player1.golem.stones.equals(player2.golem.stones));
 	}
 
-	/**Check the golem with the same elements*/
+	/**Checks the golem with the same elements*/
 	private void controlSameGolemStone(Player player) {
 		if (player1.golem.stones.equals(player2.golem.stones)) {
 			

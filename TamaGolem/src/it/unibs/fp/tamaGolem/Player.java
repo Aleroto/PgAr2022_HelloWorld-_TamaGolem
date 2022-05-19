@@ -2,6 +2,7 @@ package it.unibs.fp.tamaGolem;
 
 import java.util.*;
 
+/**Represents the class for player */
 public class Player {
 
 	public Golem golem = new Golem(new ArrayList<Stone>(), Setup.P, Setup.V);
@@ -22,7 +23,7 @@ public class Player {
 		golemsNumbers--;
 	}
 
-	/**set the stone at the golem player*/
+	/**Sets the stone at the golem player*/
 	public void setGolemStone() {
 		// riempio due zaini con pietre
 		if (first == true || second == true) {
@@ -47,9 +48,7 @@ public class Player {
 		printBag(turn);
 	}
 
-	/**
-	 * creates a new golem after one dies and lower the number of golems available
-	 */
+	/**Creates a new golem after one dies and lower the number of golems available*/
 	public void resetGolem(int player) {
 		golem.setLifepoint(Setup.V);
 		lostGolem();
@@ -66,7 +65,8 @@ public class Player {
 		}
 
 	}
-/**print the bag*/
+	
+	/**Prints the bag*/
 	public static void printBag(int turn) {
 		System.out.println(SEPARATORE + "\nIl Tuo zaino: ");
 
@@ -120,10 +120,10 @@ public class Player {
 	 * 
 	 */
 
-	/** manages stones of player */
+	/**Manages stones of player*/
 	public void manageStone(Map<String, Integer> bag) {
 		int correct;
-		int over;
+		//int over;
 		// Integer num = 0;
 		// String text;
 		Scanner scanner = new Scanner(System.in);
@@ -159,6 +159,7 @@ public class Player {
 		}
 	}
 
+	/**Gets Bag of the Player*/
 	public Map<String, Integer> getBagPlayer(int turn) {
 		if (turn == 1)
 			return bagPlayer1;
@@ -168,10 +169,12 @@ public class Player {
 			return Setup.bag;
 	}
 
+	/**Gets Golems Numbers*/
 	public int getgolemsNumbers() {
 		return golemsNumbers;
 	}
 
+	/**Sets Golems Numbers*/
 	public void setgolemsNumbers(int golemsNumbers) {
 		this.golemsNumbers = golemsNumbers;
 	}

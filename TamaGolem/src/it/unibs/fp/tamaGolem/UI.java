@@ -7,7 +7,7 @@ import java.util.Map;
 
 import java.util.Scanner;
 
-
+/**Represents the class to manage the Game*/
 public class UI {
 	
 	private static final String CHAR_SPACE_MATRIX = "%-15s| ";
@@ -25,7 +25,7 @@ public class UI {
 
 
 
-
+	/**Runs the Program*/
 	public static void runProgram(){
 		/**
 		 * TreeMap for a ordinated list of elements with a key for the value. The value
@@ -59,7 +59,7 @@ public class UI {
 		balance();
 	}
 
-	/**print the matrix with match's balance*/
+	/**Prints the matrix with match's balance*/
 	private static void balance() {
 		System.out.println("#######################EQUILIBRIO#################");
 		System.out.printf(CHAR_SPACE_MATRIX,"");	
@@ -80,7 +80,7 @@ public class UI {
 		System.out.println("##################################################");
 	}
 	
-	/**clean the bag*/
+	/**Cleans the bag*/
 	private static void checkBagSize() {
 		if(!setupBag.isEmpty()) {
 			setupBag.removeAll(setupBag);
@@ -91,14 +91,14 @@ public class UI {
 		}
 	}
 	
-	/**clean the elements map in the glyph*/
+	/**Cleans the elements map in the glyph*/
 	private static void checkElementsSize() {
 		if(glyph != null) {
 			glyph = null;
 		}
 	}
 	
-	/**starts a new match without having to reset the execution of the program*/
+	/**Starts a new match without having to reset the execution of the program*/
 	public static boolean continueGame() {
 		int correct;
 		Scanner scanner = new Scanner(System.in);
