@@ -42,10 +42,19 @@ public class Player {
 
 		printBag(turn);
 		
+		
 		for (int i = 0; i < golem.getStoneNumber(); i++) {
 			manageStone(getBagPlayer(turn));
 		}
 		printBag(turn);
+		
+		
+		//prova risoluzione baco
+		if(turn == 1)
+			turn = 2;
+		else
+			turn = 1;
+			
 	}
 
 	/**Creates a new golem after one dies and lower the number of golems available*/
